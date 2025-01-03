@@ -15,6 +15,7 @@ export class UsersRepositoryImpl implements UsersRepository {
     createUser(name: string): string {
         const newId = this.users.size + 1;
         this.users.set(newId, name);
+        console.log("trigger", newId);
         return `User ${name} created with ID ${newId}`;
     }
 }

@@ -24,4 +24,11 @@ describe('UsersController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('should return user by ID', () => {
+    const userId = 3;
+    const result = controller.getUserById(userId);
+    expect(result).toBe('User with ID 3');
+  });
+
 });

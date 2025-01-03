@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
 import { UsersRepository } from './interface/User';
+import { UsersRepositoryImpl } from './users.repository';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -18,6 +19,7 @@ describe('UsersService', () => {
       providers: [
         UsersService,
         { provide: 'UsersRepository', useValue: mockRepository }
+        // { provide: 'UsersRepository', useValue: UsersRepositoryImpl }
       ],
     }).compile();
 
@@ -36,6 +38,9 @@ describe('UsersService', () => {
 
   it('should create a new mocked user', () => {
     const userName = 'Alice';
-    expect(service.addUser(userName)).toBe('Mocked creation of user Alice');
+
+    const created = service.addUser(userName);
+    console.log("created", created);
+    expect(created).toBe('Mocked creation of user Alice');
   });
 });
